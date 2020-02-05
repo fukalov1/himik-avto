@@ -107,7 +107,7 @@ class PageBlockController extends Controller
             return $str;
         });
         $grid->text('Текст')->display(function ($text) {
-            return (str_limit(strip_tags($text), 250, '...'));
+            return (substr(strip_tags($text), 0, 250));
 //            return '<pre>'.substr($this->text,0,250).'</pre>';
         });
         $grid->question('Функционал')->display(function () {
