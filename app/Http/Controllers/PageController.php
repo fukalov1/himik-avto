@@ -32,22 +32,6 @@ class PageController extends Controller
     {
 
         $location = '';
-        $domain = explode('.', $_SERVER['HTTP_HOST']);
-        if(count($domain)==3 and $domain[0]!='www') {
-           $location = $domain[0];
-        }
-        if ($location=='') {
-            $subdomain = SubDomain::first();
-        }
-        else {
-            $subdomain = SubDomain::where('name', $location)->get()->first();
-            if(!$subdomain)
-                $subdomain = SubDomain::first();
-        }
-
-//        dd($location)
-//        dd($subdomain);
-//        dd($page);
         $template = 'page';
         $data = ['data' => $page];
         // Если главная страница
@@ -67,10 +51,8 @@ class PageController extends Controller
             $location .= '_';
         }
         $data['locate'] = $location;
-        $data['headers'] = $subdomain;
         $data['pages'] = $this->page->getMenu();
         $page_blocks = $this->pageBlock->where('page_id', $page->id)->orderBy('orders')->get();
-        $page_blocks = $this->preparePageBlocks($page_blocks, $subdomain);
         $data['page_blocks'] = $page_blocks;
 //        $data['banners'] = $banners;
         $data['bread_crumbs'] = '<a href="/">Главная</a> /'.$this->bread_crubs;
@@ -80,14 +62,6 @@ class PageController extends Controller
         return view($template, $data);
     }
 
-    private function preparePageBlocks($page_blocks, $subdomain)
-    {
-        foreach ($page_blocks as $item) {
-            $item->text = preg_replace("/\#city/", $subdomain->notice, $item->text);
-        }
-
-        return $page_blocks;
-    }
 
     private function getBeadCrumbs($id)
     {
