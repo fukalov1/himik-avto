@@ -57,7 +57,9 @@
                                         <div class="portfolio  ">
                                             <div class="single_protfolio">
                                                 <div class="prot_imag">
-                                                    <a class="/venobox" href="/uploads/{{ $item->image }}" data-gall="myGallery"><img src="/uploads/{{ $item->image }}" alt="" /></a>
+                                                    <a class="/venobox" href="/uploads/images/{{ $item->image }}" data-gall="myGallery">
+                                                        <img src="/uploads/images/thumbnail/{{ $item->image }}" alt="" />
+                                                    </a>
                                                     <div class="hover_port_text">
                                                         <h2><a href="#">Моющие средства PLEX</a></h2>
                                                         <p>{{ $direction->name }}</p>

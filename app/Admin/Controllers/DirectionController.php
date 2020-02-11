@@ -170,7 +170,8 @@ class DirectionController extends Controller
                 $form->text('title','Заголовок');
                 $form->text('url','Ссылка на страницу');
                 $form->textarea('text', 'Текст');
-                $form->file('image', 'Картинка');
+                $form->myimage('image', 'Фото');
+//                $form->file('image', 'Картинка');
         });
 
         return $form;

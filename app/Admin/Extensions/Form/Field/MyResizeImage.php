@@ -5,8 +5,8 @@ namespace App\Admin\Extensions\Form\Field;
 use Encore\Admin\Form\Field\Image;
 use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-//use Imagez;
 use Intervention\Image\Facades\Image as Imagez;
+
 
 class MyResizeImage extends Image
 {
@@ -32,7 +32,7 @@ class MyResizeImage extends Image
     public function prepare($image)
     {
         $width = 350;
-        $height = 233;
+        $height = 263;
         $result='';
         if (request()->has(static::FILE_DELETE_FLAG)) {
             return $this->destroy();
@@ -46,6 +46,10 @@ class MyResizeImage extends Image
 
         $file = public_path('uploads').'/'.$filename;
         $filename = preg_replace('/images\//','', $filename);
+
+        //Вывод превьюшки
+        $size = 'x1024';
+
         try {
             $i = Imagez::make($file);
             $w = $i->width();
@@ -57,18 +61,21 @@ class MyResizeImage extends Image
             else {
                 $i->resize($width, round($width*$h/$w,0));
             }
-            Log::warning('test write preview '.public_path('uploads').'/images/thumbnail/'.$filename);
-//        $i->crop($width,$height);
-
+            if ($w<$h) {
+                $i->rotate(90);
+                $w=$w+$h-$h=$w;
+            }
+            if ($h > $height) {
+                $i->crop($width, $height);
+            }
+//            echo $i->stream();
             $i->save(public_path('uploads').'/images/thumbnail/'.$filename);
-            $i->crop($width,$height);
-            Log::info('Write successfully preview '.public_path('uploads').'/images/thumbnail/'.$filename);
         }
         catch (\Exception $exception) {
-            Log::warning('Error write preview '.public_path('uploads').'/images/thumbnail/'.$filename." Error: ".$exception->getMessage() );
+            echo null;
         }
 
-        $i->save(public_path('uploads').'/images/thumbnail/'.$filename);
+
 
 
         return $filename;
