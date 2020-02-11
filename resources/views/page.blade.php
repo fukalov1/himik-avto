@@ -2,107 +2,150 @@
 
 
 @section('content')
-    <div class="background">
-        <div class="background__figure"></div>
-    </div>
-    <div class="main-screen">
-        <div class="background-mobile"></div>
-        <div class="wrapper flex">
-            <h1 class="main-screen__caption">Производим тактильную&nbsp;плитку с отгрузкой по&nbsp;России и&nbsp;СНГ</h1>
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <h2 class="swiper-caption">Бетонная тактильная плитка</h2>
-                        <div class="swiper-img swiper-img_concrete"></div>
-                    </div>
-                    <div class="swiper-slide">
-                        <h2 class="swiper-caption">Пластиковая тактильная плитка</h2>
-                        <div class="swiper-img swiper-img_plastic"></div>
-                    </div>
-                    <div class="swiper-slide">
-                        <h2 class="swiper-caption">Тактильная лента</h2>
-                        <div class="swiper-img swiper-img_tape"></div>
-                    </div>
-                    <div class="swiper-slide">
-                        <h2 class="swiper-caption">Тактильные индикаторы</h2>
-                        <div class="swiper-img swiper-img_detector"></div>
-                    </div>
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-    </div>
-    <div class="wrapper">
-        <nav class="navbar">
-            <ul class="menu">
-                @foreach($pages as $page)
-                    @if($page->relation)
-                        <li class="menu-item-has-children">
-                            @if($page->redirect=='')
-                                @if($page->relation)
-                                    <span>
-                                        {!! $page->name  !!}
-                                    </span>
-                                @else
-                                    <a href='/{{ $page->url }}'>{!! $page->name  !!} </a>
-                                @endif
-                            @else
-                                <a href='/{{ $page->redirect }}'>{!! $page->name  !!} </a>
-                            @endif
-                            <ul class="sub-menu">
-                                @foreach($page->sub_pages as $sub_page)
-                                    @if($sub_page->redirect=='')
-                                        <li><a href='/{{ $sub_page->url }}'>{!! $sub_page->name  !!} </a></li>
-                                    @else
-                                        <li><a href='/{{ $sub_page->redirect }}'>{!! $sub_page->name  !!} </a></li>
-                                    @endif
-                                @endforeach
-                            </ul>
-                        </li>
-                    @else
-                        <li>
-                            @if($page->redirect=='')
-                                <a href='/{{ $page->url }}'>{!! $page->name  !!} </a>
-                            @else
-                                <a href='/{{ $page->redirect }}'>{!! $page->name  !!} </a>
-                            @endif
-                        </li>
-                    @endif
-                @endforeach
-            </ul>
-        </nav>
-    </div>
-    <div class="main-content">
+
+     <div class="main-content">
         <div class="wrapper flex">
             @foreach($page_blocks as $page_block)
                 @if($page_block->type == '1')
-                    <section class="page-block" id="block{{$page_block->id}}">
-                        <div class="main-content__text">
-                            <h1>{{ $page_block->header }}  в г. {{ $headers->notice }}</h1>
-                            <p>
-                                {!! $page_block->text !!}
-                            </p>
+                    <div class="about_area" id="about">
+                        <div class="container">
+                            <div class="row">
+                                <!--section title-->
+                                <div class="col-md-12 col-sm-12 col-lg-12">
+                                    <div class="section_title">
+                                        <h2 class="title"><span>{!! $page_block->header !!}</span></h2>
+                                    </div>
+                                </div>
+                                <!--end section title-->
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    {!! $page_block->text !!}
+                                </div>
+                            </div>
                         </div>
-                    </section>
-                @elseif($page_block->type=='2')
-                    <div class="main-content__img">
-                        <img src="/uploads/{{ $page_block->image }}" alt="{{ $page_block->header }}">
                     </div>
-                    <div class="main-content__text">
-                        @if($page_block->header)
-                            <h1>{{ $page_block->header }}</h1>
-                        @endif
-                        <p>
-                            {!! $page_block->text !!}
-                        </p>
+
+                @elseif($page_block->type=='2')
+                    <div class="portfolio_area" id="projects">
+                        <div class="container">
+                            <div class="row">
+                                <!--section title-->
+                                <div class="col-md-12">
+                                    <div class="section_title">
+                                        <h2 class="title"><span>Направления компании</span></h2>
+                                    </div>
+                                </div>
+                                <!--end section title-->
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="portfolio_nav">
+                                        <ul>
+                                            @foreach($page_block->directions as $direction)
+                                                    <li class="filter" data-filter=".{{ $direction->name }}">{{ $direction->name }}</li>
+                                            @endforeach
+
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="project_maxitup">
+                                    <!--single portfolio item-->
+                                    <div class="col-md-4 col-sm-6 mix Автохимия">
+                                        <div class="portfolio  ">
+                                            <div class="single_protfolio">
+                                                <div class="prot_imag">
+                                                    <a class="/venobox" href="/img/home2/tab/t1.jpg" data-gall="myGallery"><img src="/img/portfolio/p1.jpg" alt="" /></a>
+                                                    <div class="hover_port_text">
+                                                        <h2><a href="#">Моющие средства PLEX</a></h2>
+                                                        <p>Автошампуни</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end single portfolio item-->
+                                    <!--single portfolio item-->
+                                    <div class="col-md-4 col-sm-6 mix Автохимия">
+                                        <div class="portfolio ">
+                                            <div class="single_protfolio">
+                                                <div class="prot_imag">
+                                                    <a class="/venobox" href="/img/home2/tab/t3.jpg" data-gall="myGallery"><img src="/img/portfolio/p2.jpg" alt="" /></a>
+                                                    <div class="hover_port_text">
+                                                        <h2><a href="#">Моющие средства</a></h2>
+                                                        <p>Автошампуни</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end single portfolio item-->
+                                    <!--single portfolio item-->
+                                    <div class="col-md-4 col-sm-6 mix Автохимия">
+                                        <div class="portfolio ">
+                                            <div class="single_protfolio">
+                                                <div class="prot_imag">
+                                                    <a class="/venobox" href="/img/home2/tab/t4.jpg" data-gall="myGallery"><img src="/img/portfolio/p3.jpg" alt="" /></a>
+                                                    <div class="hover_port_text">
+                                                        <h2><a href="#">Очистители GRASS</a></h2>
+                                                        <p>Автокосметика</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end single portfolio item-->
+                                    <!--single portfolio item-->
+                                    <div class="col-md-4 col-sm-6 mix Шиномонтаж">
+                                        <div class="portfolio ">
+                                            <div class="single_protfolio">
+                                                <div class="prot_imag">
+                                                    <a class="/venobox" href="/img/home2/tab/t5.jpg" data-gall="myGallery"><img src="/img/portfolio/p5.jpg" alt="" /></a>
+                                                    <div class="hover_port_text">
+                                                        <h2><a href="#">CURABITUR VEL IMPERDIET ORCI</a></h2>
+                                                        <p>Шиномонтаж</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end single portfolio item-->
+                                    <!--single portfolio item-->
+                                    <div class="col-md-4 col-sm-6 mix Photoshop  Шиномонтаж Пневматика">
+                                        <div class="portfolio ">
+                                            <div class="single_protfolio">
+                                                <div class="prot_imag">
+                                                    <a class="/venobox" href="/img/home2/tab/t5.jpg" data-gall="myGallery"><img src="/img/portfolio/p5.jpg" alt="" /></a>
+                                                    <div class="hover_port_text">
+                                                        <h2><a href="#">CURABITUR VEL IMPERDIET ORCI</a></h2>
+                                                        <p>Присадки / Art / Автомойки</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end single portfolio item-->
+                                    <!--single portfolio item-->
+                                    <div class="col-md-4 col-sm-6 mix Photoshop Photoshop Шиномонтаж">
+                                        <div class="portfolio ">
+                                            <div class="single_protfolio">
+                                                <div class="prot_imag">
+                                                    <a class="/venobox" href="/img/home2/tab/t4.jpg" data-gall="myGallery"><img src="/img/portfolio/p5.jpg" alt="" /></a>
+                                                    <div class="hover_port_text">
+                                                        <h2><a href="#">CURABITUR VEL IMPERDIET ORCI</a></h2>
+                                                        <p>Присадки / Art / Автомойки</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end single portfolio item-->
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 @elseif($page_block->type=='3')
-                    <section class="promo" id="block{{$page_block->id}}">
-                        <div class="container">
-                            <h3>{{ $page_block->header }}</h3>
-                            {!! $page_block->text !!}
-                        </div>
-                    </section>
+                    {!! $page_block->text !!}
                 @elseif($page_block->type=='4')
                     <section class="page-block-doc" id="block{{$page_block->id}}">
                         <div class="container">
@@ -125,31 +168,65 @@
                         </div>
                     </section>
                 @elseif($page_block->type=='7')
-                    <section class="page-block">
-                        <div class="container">
+
+                <!-- HOME SLIDER -->
+                    <div class="slider-wrap home-1-slider" id="home">
+                        <div id="mainSlider" class="nivoSlider slider-image">
                             @foreach($page_block->sliders as $slider)
-                                <div id="my-slider" class="my-slider">
-                                    @foreach($slider->items as $item)
-                                        <div class="slide">
-                                            <div class="slide-image" style="background: url('/uploads/{{ $item->image }}')">
-                                                <div class="slide-title">
-                                                    <h3>
-                                                        <a href="{{ $item->url }}" target="_blank">
-                                                            {{ $item->title }}
-                                                        </a>
-                                                    </h3>
+                                @foreach($slider->items as $item)
+                                    <img src="/img/slider1.jpg" alt="main slider" title="#htmlcaption{{ $item->id }}"/>
+                                @endforeach
+                            @endforeach
+                        </div>
+                        @foreach($page_block->sliders as $slider)
+                            @foreach($slider->items as $item)
+                                <div id="htmlcaption{{ $item->id }}" class="nivo-html-caption slider-caption-{{ $item->id }}">
+                            <div class="slider-progress"></div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="slide1-text slide-text">
+                                            <div class="middle-text">
+                                                <div class="left_sidet1">
+                                                    <div class="cap-title wow slideInRight" data-wow-duration=".9s" data-wow-delay="0s">
+                                                        <h1>{{ $item->title }}</h1>
+                                                    </div>
+                                                    <div class="cap-dec wow slideInRight" data-wow-duration="1.1s" data-wow-delay="0s">
+                                                        <h2>{{ $item->text }}</h2>
+                                                    </div>
+                                                    <div class="cap-readmore animated fadeInUpBig" data-wow-duration="1.5s" data-wow-delay=".5s">
+                                                        <a href="#" >Заказать</a>
+                                                        <!--										<a href="#" class="hover_slider_button">Смотреть каталог</a>-->
+                                                    </div>
+                                                </div>
+                                                <div class="right_sidet1">
+                                                    <div class="slide-image1">
+                                                        <img class="wow slideInUp"  data-wow-duration="1.5s" data-wow-delay="0s" src="/uploads/{{ $item->image }}" alt="slider caption" />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    @endforeach
+                                    </div>
                                 </div>
-                            @endforeach
+                            </div>
                         </div>
-                    </section>
+                            @endforeach
+                        @endforeach
+
+
+                    </div>
+                    <!-- HOME SLIDER -->
                 @elseif($page_block->type=='8')
-                    <section class="page-block" id="block{{$page_block->id}}">
-                        {!! $page_block->text !!}
-                    </section>
+                    <div class="all-area" style="background: rgba(0, 0, 0, 0) url('/uploads/{{ $page_block->image }}') repeat scroll 0 0 / cover">
+                        <div class="container">
+                            <div class="row">
+                                    <div class="col-md-12">
+                                                {!! $page_block->text !!}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 @elseif($page_block->type=='9')
                     @foreach($page_block->photosets as $photoset)
                         <section id="photo-gallery">

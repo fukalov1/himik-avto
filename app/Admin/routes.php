@@ -18,6 +18,8 @@ Route::group([
     $router->resource('events', CenterEventController::class);
     $router->resource('sliders', SliderController::class)->middleware('set_page_block');
     $router->resource('slider_items', SliderItemController::class)->middleware('set_slider');
+    $router->resource('directions', DirectionController::class)->middleware('set_page_block');
+    $router->resource('direction_items', DirectionItemController::class)->middleware('set_direction');
     $router->resource('photosets', PhotosetController::class)->middleware('set_page_block');
     $router->resource('photos', PhotoController::class)->middleware('set_photoset');
     $router->resource('mailforms', MailFormController::class)->middleware('set_page_block');

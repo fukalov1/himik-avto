@@ -112,7 +112,10 @@ class PageBlockController extends Controller
         });
         $grid->question('Функционал')->display(function () {
             $str = '';
-            if ($this->type==7) {
+            if ($this->type==2) {
+                $str = '<a href="/admin/directions?set='.$this->id.'">Каталог</a>';
+            }
+            elseif ($this->type==7) {
                 $str = '<a href="/admin/sliders?set='.$this->id.'">слайдеры</a>';
             }
             elseif ($this->type==9) {
@@ -176,11 +179,8 @@ class PageBlockController extends Controller
         $form->select('type', 'Тип текстового блока')->options(function ($id) {
             $list = [
                 '1' => 'Стандарт',
-                '2' => 'С фото',
+                '2' => 'Каталог',
                 '3'=> 'Промо-блок',
-                '4'=> 'Список документов',
-                '5'=> 'Список ссылок',
-                '6'=> 'Список ссылок на PDF',
                 '7'=> 'Слайдеры',
                 '8'=> 'Блок во всю ширину',
                 '9'=> 'Фотогалерея',

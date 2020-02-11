@@ -8,6 +8,8 @@ use App\Page;
 use App\PageBlock;
 use App\Slider;
 use App\SliderItem;
+use App\Direction;
+use App\DirectionItem;
 use App\Photoset;
 use App\MailForm;
 use Illuminate\Http\Request;
@@ -17,13 +19,15 @@ class PageController extends Controller
 {
     public $bread_crubs;
 
-    public function __construct(Page $page, PageBlock $pageBlock,
+    public function __construct(Page $page, PageBlock $pageBlock, Direction $direction, DirectionItem $directionItem,
                                 Slider $slider, SliderItem $sliderItem, Photoset $photoset, MailForm $mailForm)
     {
         $this->page = $page;
         $this->pageBlock = $pageBlock;
         $this->slider = $slider;
         $this->sliderItem = $sliderItem;
+        $this->direction = $direction;
+        $this->directionItem = $directionItem;
         $this->photoset = $photoset;
         $this->mailForm = $mailForm;
     }
@@ -41,6 +45,7 @@ class PageController extends Controller
                 'data' => $page
             ];
         }
+
         //  баннера для зоны новостей
 //        $banners = $this->sliderItem->where('slider_id',4)->get();
 //        $limit_news = 4;
@@ -50,7 +55,9 @@ class PageController extends Controller
         if ($location!='') {
             $location .= '_';
         }
-        $data['locate'] = $location;
+        $data['phone'] = config('phone');
+        $data['email'] = config('email');
+        $data['address'] = config('address');
         $data['pages'] = $this->page->getMenu();
         $page_blocks = $this->pageBlock->where('page_id', $page->id)->orderBy('orders')->get();
         $data['page_blocks'] = $page_blocks;

@@ -11,16 +11,44 @@
             </div>
             <!--end logo area-->
             <!--nav area-->
-            <div class="col-md-9 col-sm-9 col-xs-8">
+            <div class="col-md-7 col-sm-7 col-xs-6">
                 <!--  nav menu-->
                 <nav class="menu">
                     <ul class="navid">
-                        <li><a href="index.html">Главная</a></li>
-                        <li><a href="#about">О нас</a></li>
-                        <li><a href="#teams">Каталог</a></li>
-                        <li><a href="#services">Ремонт и сервис</a></li>
-                        <li><a href="#contact">Контакты</a></li>
-                        <li><a href="#services">Прайс-лист</a></li>
+                        @foreach($pages as $page)
+                            @if($page->relation)
+                                <li class="menu-item-has-children">
+                                    @if($page->redirect=='')
+                                        @if($page->relation)
+                                            <span>
+                                        {!! $page->name  !!}
+                                    </span>
+                                        @else
+                                            <a href='/{{ $page->url }}'>{!! $page->name  !!} </a>
+                                        @endif
+                                    @else
+                                        <a href='/{{ $page->redirect }}'>{!! $page->name  !!} </a>
+                                    @endif
+                                    <ul class="sub-menu">
+                                        @foreach($page->sub_pages as $sub_page)
+                                            @if($sub_page->redirect=='')
+                                                <li><a href='/{{ $sub_page->url }}'>{!! $sub_page->name  !!} </a></li>
+                                            @else
+                                                <li><a href='/{{ $sub_page->redirect }}'>{!! $sub_page->name  !!} </a></li>
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                </li>
+                            @else
+                                <li>
+                                    @if($page->redirect=='')
+                                        <a href='/{{ $page->url }}'>{!! $page->name  !!} </a>
+                                    @else
+                                        <a href='{{ $page->redirect }}'>{!! $page->name  !!} </a>
+                                    @endif
+                                </li>
+                            @endif
+                        @endforeach
                     </ul>
                 </nav>
                 <!--end  nav menu-->
@@ -28,20 +56,50 @@
                 <div class="dropdown mabile_menu">
                     <a data-toggle="dropdown" class="mobile-menu" href="#"><span>  </span><i class="fa fa-bars"></i></a>
                     <ul class="dropdown-menu mobile_menus drop_mobile navid">
-                        <li><a href="index.html">Главная</a></li>
-                        <li><a href="#about">О нас</a></li>
-                        <li><a href="#teams">Каталог</a></li>
-                        <li><a href="#services">Ремонт и сервис</a></li>
-                        <li><a href="#contact">Контакты</a></li>
-                        <li><a href="#services">Прайс-лист</a></li>
-                        <!--								<li><a href="#blogs">Blogs</a></li>-->
-                        <!--								<li><a href="#work">Work</a></li>-->
-                        <!--								<li><a href="#contact">Contact</a></li>-->
+                        @foreach($pages as $page)
+                            @if($page->relation)
+                                <li class="menu-item-has-children">
+                                    @if($page->redirect=='')
+                                        @if($page->relation)
+                                            <span>
+                                                {!! $page->name  !!}
+                                            </span>
+                                        @else
+                                            <a href='/{{ $page->url }}'>{!! $page->name  !!} </a>
+                                        @endif
+                                    @else
+                                        <a href='{{ $page->redirect }}'>{!! $page->name  !!} </a>
+                                    @endif
+                                    <ul class="sub-menu">
+                                        @foreach($page->sub_pages as $sub_page)
+                                            @if($sub_page->redirect=='')
+                                                <li><a href='/{{ $sub_page->url }}'>{!! $sub_page->name  !!} </a></li>
+                                            @else
+                                                <li><a href='/{{ $sub_page->redirect }}'>{!! $sub_page->name  !!} </a></li>
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                </li>
+                            @else
+                                <li>
+                                    @if($page->redirect=='')
+                                        <a href='/{{ $page->url }}'>{!! $page->name  !!} </a>
+                                    @else
+                                        <a href='/{{ $page->redirect }}'>{!! $page->name  !!} </a>
+                                    @endif
+                                </li>
+                            @endif
+                        @endforeach
                     </ul>
                 </div>
                 <!--end moblie menu-->
             </div>
             <!--end nav area-->
+            <div class="col-md-2 col-sm-2 col-xs-12 text-right header-phone">
+               <a href="tel:{{ $phone }}">
+                {{ $phone }}
+               </a>
+            </div>
         </div>
     </div>
 </div>

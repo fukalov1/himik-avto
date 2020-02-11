@@ -18,6 +18,7 @@ class CreateSliderItemsTable extends Migration
             $table->bigInteger('slider_id')->unsigned();
             $table->string('title')->nullable();
             $table->text('text')->nullable();
+            $table->string('url')->nullable();
             $table->string('image');
             $table->integer('orders')->default(1);
             $table->foreign('slider_id')->references('id')->on('sliders')->onDelete('cascade');
