@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class SetSlider
+class SetDirection
 {
     /**
      * Handle an incoming request.
