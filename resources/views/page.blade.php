@@ -51,95 +51,23 @@
                                 </div>
                                 <div class="project_maxitup">
                                     <!--single portfolio item-->
-                                    <div class="col-md-4 col-sm-6 mix Автохимия">
+                                    @foreach($page_block->directions as $direction)
+                                        @foreach($direction->items as $item)
+                                        <div class="col-md-4 col-sm-6 mix {{ $direction->name }}">
                                         <div class="portfolio  ">
                                             <div class="single_protfolio">
                                                 <div class="prot_imag">
-                                                    <a class="/venobox" href="/img/home2/tab/t1.jpg" data-gall="myGallery"><img src="/img/portfolio/p1.jpg" alt="" /></a>
+                                                    <a class="/venobox" href="/uploads/{{ $item->image }}" data-gall="myGallery"><img src="/uploads/{{ $item->image }}" alt="" /></a>
                                                     <div class="hover_port_text">
                                                         <h2><a href="#">Моющие средства PLEX</a></h2>
-                                                        <p>Автошампуни</p>
+                                                        <p>{{ $direction->name }}</p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!-- end single portfolio item-->
-                                    <!--single portfolio item-->
-                                    <div class="col-md-4 col-sm-6 mix Автохимия">
-                                        <div class="portfolio ">
-                                            <div class="single_protfolio">
-                                                <div class="prot_imag">
-                                                    <a class="/venobox" href="/img/home2/tab/t3.jpg" data-gall="myGallery"><img src="/img/portfolio/p2.jpg" alt="" /></a>
-                                                    <div class="hover_port_text">
-                                                        <h2><a href="#">Моющие средства</a></h2>
-                                                        <p>Автошампуни</p>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
-                                    </div>
-                                    <!-- end single portfolio item-->
-                                    <!--single portfolio item-->
-                                    <div class="col-md-4 col-sm-6 mix Автохимия">
-                                        <div class="portfolio ">
-                                            <div class="single_protfolio">
-                                                <div class="prot_imag">
-                                                    <a class="/venobox" href="/img/home2/tab/t4.jpg" data-gall="myGallery"><img src="/img/portfolio/p3.jpg" alt="" /></a>
-                                                    <div class="hover_port_text">
-                                                        <h2><a href="#">Очистители GRASS</a></h2>
-                                                        <p>Автокосметика</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end single portfolio item-->
-                                    <!--single portfolio item-->
-                                    <div class="col-md-4 col-sm-6 mix Шиномонтаж">
-                                        <div class="portfolio ">
-                                            <div class="single_protfolio">
-                                                <div class="prot_imag">
-                                                    <a class="/venobox" href="/img/home2/tab/t5.jpg" data-gall="myGallery"><img src="/img/portfolio/p5.jpg" alt="" /></a>
-                                                    <div class="hover_port_text">
-                                                        <h2><a href="#">CURABITUR VEL IMPERDIET ORCI</a></h2>
-                                                        <p>Шиномонтаж</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end single portfolio item-->
-                                    <!--single portfolio item-->
-                                    <div class="col-md-4 col-sm-6 mix Photoshop  Шиномонтаж Пневматика">
-                                        <div class="portfolio ">
-                                            <div class="single_protfolio">
-                                                <div class="prot_imag">
-                                                    <a class="/venobox" href="/img/home2/tab/t5.jpg" data-gall="myGallery"><img src="/img/portfolio/p5.jpg" alt="" /></a>
-                                                    <div class="hover_port_text">
-                                                        <h2><a href="#">CURABITUR VEL IMPERDIET ORCI</a></h2>
-                                                        <p>Присадки / Art / Автомойки</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end single portfolio item-->
-                                    <!--single portfolio item-->
-                                    <div class="col-md-4 col-sm-6 mix Photoshop Photoshop Шиномонтаж">
-                                        <div class="portfolio ">
-                                            <div class="single_protfolio">
-                                                <div class="prot_imag">
-                                                    <a class="/venobox" href="/img/home2/tab/t4.jpg" data-gall="myGallery"><img src="/img/portfolio/p5.jpg" alt="" /></a>
-                                                    <div class="hover_port_text">
-                                                        <h2><a href="#">CURABITUR VEL IMPERDIET ORCI</a></h2>
-                                                        <p>Присадки / Art / Автомойки</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end single portfolio item-->
+                                        @endforeach
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

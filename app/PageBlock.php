@@ -5,6 +5,7 @@ use App\Page;
 use App\Map;
 use App\Photoset;
 use App\Slider;
+use App\Direction;
 use App\MailForm;
 use App\QuestBlock;
 use Illuminate\Database\Eloquent\Model;
@@ -36,6 +37,11 @@ class PageBlock extends Model
     public function  sliders()
     {
         return $this->hasMany(Slider::class);
+    }
+
+    public function  directions()
+    {
+        return $this->hasMany(Direction::class);
     }
 
     public function  mail_forms()
