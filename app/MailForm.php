@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class MailForm extends Model
 {
 
-    protected $table = 'mailforms';
+    protected $table = 'mail_forms';
 
     public function fields()
     {

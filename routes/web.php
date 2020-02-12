@@ -11,6 +11,9 @@
 |
 */
 
+Route::post('/send_form/{id}', 'PageController@sendFormData');
+
+
 Route::get('/', function () {
     return view('welcome');
 });

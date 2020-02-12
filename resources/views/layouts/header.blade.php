@@ -7,7 +7,7 @@
         <div class="row">
             <!--logo area-->
             <div class="col-md-3 col-sm-3 col-xs-4">
-                <div class="logo"><a href="index.html"><img src="/img/logo.png" alt="" /></a></div>
+                <div class="logo"><a href="/"><img src="/img/logo.png" alt="" /></a></div>
             </div>
             <!--end logo area-->
             <!--nav area-->

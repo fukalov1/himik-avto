@@ -32,7 +32,11 @@
 <script type="text/javascript" src="/venobox/venobox.min.js"></script>
 <!-- main js
 ============================================ -->
+<script src="{{ asset('/js/jquery.maskedinput.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/js/inputmask.js') }}" type="text/javascript"></script>
+
 <script src="/js/main.js"></script>
+<script src="/js/site.js"></script>
 <!-- Google Map js -->
 <script src="https://maps.googleapis.com/maps/api/js"></script>
 <script>

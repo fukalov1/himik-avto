@@ -59,7 +59,7 @@ class PageController extends Controller
         $data['email'] = config('email');
         $data['address'] = config('address');
         $data['pages'] = $this->page->getMenu();
-        $page_blocks = $this->pageBlock->where('page_id', $page->id)->orderBy('orders')->get();
+        $page_blocks = $this->pageBlock->where('page_id', $page->id)->where('orders','>',0)->orderBy('orders')->get();
         $data['page_blocks'] = $page_blocks;
 //        $data['banners'] = $banners;
         $data['bread_crumbs'] = '<a href="/">Главная</a> /'.$this->bread_crubs;
@@ -114,8 +114,9 @@ class PageController extends Controller
             }
             catch (\Exception $error) {
 //                dd($error->message);
+//                dd($data);
                 $data = ['success' => false, 'result' => 'Ошибка. <br/><br/>Сообщение не было отправлено администратору.<br/>'];
-                Log::channel('sitelog')->info('Error! Sender: '.config('email').'  Receiver: '.$data['to'].' User:' . request('email') . ' name: ' . request('fio') . ' ' . request('direction').' Error: '.$error->getMessage());
+                Log::channel('sitelog')->info('Error! Sender: '.config('email').'  Receiver: '. $mailform->sender.' User:' . request('email') . ' name: ' . request('fio') . ' ' . request('direction').' Error: '.$error->getMessage());
             }
         }
         else {

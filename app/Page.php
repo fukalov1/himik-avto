@@ -14,7 +14,7 @@ class Page extends Model
 
     public function page_blocks()
     {
-        return $this->hasMany(PageBlock::class);
+        return $this->hasMany(PageBlock::class)->orderBy('orders');;
     }
 
     public function getMenu()

@@ -16,7 +16,7 @@ class PageBlock extends Model
 
     public function pages()
     {
-        return $this->belongsTo(Page::class);
+        return $this->belongsTo(Page::class)->where('page_block.orders', '>', 'ffds')->orderBy('orders');
     }
 
     public function  quest_blocks()

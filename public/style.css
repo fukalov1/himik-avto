@@ -1265,7 +1265,7 @@ footer area css
 }
 #name:focus,
 #email:focus,
-#mes {
+.message {
     box-shadow: none;
 }
 .inputt {
@@ -1283,7 +1283,7 @@ footer area css
     top: 0;
     width: 56px;
 }
-#mes {
+.message {
     background: #3e4755 none repeat scroll 0 0;
     border: 1px solid #5b626d;
     border-radius: 0;
@@ -1873,7 +1873,7 @@ home-2 area css
     height: 46px;
     padding-left: 56px;
 }
-.home-2 #mes {
+.home-2 .message {
     background: #1681b5 none repeat scroll 0 0;
     border: 1px solid #1681b5;
     padding-left: 56px;
@@ -2440,11 +2440,15 @@ home-3 area css
 .home-3 #email {
     padding-left: 56px;
 }
-.home-3 #mes {
+.home-3 .message {
     padding-left: 56px;
 }
 .home-3 .message_icon {
     border-right: 0px solid #5b626d;
+}
+.sunmite_button {
+    color: #ffffff;
+    font-size: 1.3em;
 }
 .home-3 .sunmite_button button {
     width: 100%;
