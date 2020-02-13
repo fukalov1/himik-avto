@@ -104,7 +104,7 @@ class DirectionItemController extends Controller
         $grid->title('Наименование');
         $grid->url('Ссылка');
         $grid->image('Изображение')->display(function () {
-            return  '<img src="/uploads/'.$this->image.'" width="200"/>';
+            return  '<img src="/uploads/images/thumbnail/'.$this->image.'" width="200"/>';
         });
         $grid->orders('Номер показа');
 //        $grid->created_at('Created at');
@@ -148,7 +148,7 @@ class DirectionItemController extends Controller
         $form->text('title', 'Наименование');
         $form->text('url', 'Ссылка на страницу');
         $form->textarea('text', 'Текст');
-        $form->image('image', 'Изображение');
+        $form->myimage('image', 'Фото');
         $form->number('orders', 'Номер показа')->default(1);
 
         return $form;
