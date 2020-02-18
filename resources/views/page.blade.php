@@ -63,11 +63,12 @@
                                                         <div class="prot_imag">
                                                             <a  data-fancybox="gallery" class="/venobox" href="/uploads/images/{{ $item->image }}" data-gall="myGallery">
                                                                 <img src="/uploads/images/thumbnail/{{ $item->image }}" alt="" />
-                                                            </a>
+
                                                             <div class="hover_port_text">
-                                                                <h2><a href="/uploads/images/{{ $item->image }}" data-fancybox="gallery" >{{ $direction->name }} {{ $item->title }}</a></h2>
+                                                                <h2>{{ $direction->name }} {{ $item->title }}</h2>
                                                                 <p> {{ $item->text }}</p>
                                                             </div>
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>

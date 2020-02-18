@@ -30,5 +30,9 @@ Route::group([
     $router->resource('quest_blocks', QuestBlockController::class)->middleware('set_page_block');
     $router->resource('questions', QuestionController::class)->middleware('set_quest_block');
 
+    $router->resource('catalogs', CatalogController::class)->middleware('set_catalog');
+    $router->resource('goods', GoodController::class)->middleware('set_catalog');
+
+
     $router->resource('sub-domains', SubDomainController::class);
 });
