@@ -92,7 +92,7 @@ class CatalogController extends AdminController
         $form->text('title', __('Заголовок'));
         $form->text('description', __('Описание'));
         $form->text('keywords', __('Ключевые слова'));
-//        $form->url('url', __('Url'));
+        $form->translate('url', 'Адрес страницы (url)');
 //        $form->text('redirect', __('Redirect'));
 //        $form->switch('relation', __('Relation'));
         $form->text('name', __('Наименование'));

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Catalog;
 use Illuminate\Routing\Router;
 use App\Page;
 use Illuminate\Support\Facades\Route;
@@ -54,6 +55,20 @@ class RouteServiceProvider extends ServiceProvider
                                 ]);
                         }]);
                 }
+
+                $catalog = Catalog::all();
+                foreach ($catalog as $item) {
+                    $router->get($item->url,
+                        [
+                            'as' => $item->route_name, function () use ($item, $router) {
+                            return $this->app->call('App\Http\Controllers\CatalogController@show',
+                                [
+                                    'catalog' => $item,
+                                    'parameters' => $router->current()->parameters
+                                ]);
+                        }]);
+                }
+
             });
 
 

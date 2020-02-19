@@ -23,16 +23,16 @@ class TextTranslate extends Text
 
         $parent = \App\Page::find($this->form->model()->parent_id);
 
-        if ($value=='главная')
-            $value = '';
-        else {
+//        if ($value=='главная')
+//            $value = '';
+//        else {
             $value = $this->translit($value);
-            if ($parent) {
-                $parent = $this->translit($parent->name);
-                $value = $parent.'/'.$value;
-            }
+//            if ($parent) {
+//                $parent = $this->translit($parent->name);
+//                $value = $parent.'/'.$value;
+//            }
 
-        }
+//        }
 //        dd($value);
 
         $this->prepend('<i class="fa fa-pencil fa-fw"></i>')
