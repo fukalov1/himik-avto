@@ -26,10 +26,15 @@ class CatalogController extends Controller
         if(config('perPage'))
             $perPage = config('perPage');
         $template = 'catalog';
+
+        $email = config('public_email');
+        if (!isset($email))
+            $email = config('email');
+
         $data = ['data' => $catalog];
         $data['groups'] = $this->catalog->all();
         $data['phone'] = config('phone');
-        $data['email'] = config('email');
+        $data['email'] = $email;
         $data['address'] = config('address');
         $data['goods'] = $catalog->goods()->paginate($perPage);
         $data['pages'] = $this->page->getMenu();
