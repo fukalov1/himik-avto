@@ -95,15 +95,15 @@ class GoodController extends AdminController
     {
         $form = new Form(new Good());
 
-        $form->number('catalog_id', __('Catalog id'))->default(1);
         $form->text('name', __('Name'));
+        $form->myimage('image', __('Image'));
+        $form->number('sort', __('Sort'))->default(1);
         $form->text('title', __('Title'));
         $form->text('description', __('Description'));
         $form->text('keywords', __('Keywords'));
         $form->url('url', __('Url'));
         $form->textarea('text', __('Text'));
-        $form->number('sort', __('Sort'))->default(1);
-        $form->myimage('image', __('Image'));
+        $form->number('catalog_id', __('Catalog id'))->default(session('catalog_id'));
 
         return $form;
     }

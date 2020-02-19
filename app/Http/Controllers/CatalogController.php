@@ -22,13 +22,16 @@ class CatalogController extends Controller
 //        foreach ($catalog->goods as $item) {
 //            dd('TEST',$catalog);
 //        }
+        $perPage = 9;
+        if(config('perPage'))
+            $perPage = config('perPage');
         $template = 'catalog';
         $data = ['data' => $catalog];
         $data['groups'] = $this->catalog->all();
         $data['phone'] = config('phone');
         $data['email'] = config('email');
         $data['address'] = config('address');
-        $data['goods'] = $catalog->goods()->paginate(3);
+        $data['goods'] = $catalog->goods()->paginate($perPage);
         $data['pages'] = $this->page->getMenu();
 
         return view($template, $data);
