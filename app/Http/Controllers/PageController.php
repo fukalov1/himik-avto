@@ -46,9 +46,13 @@ class PageController extends Controller
             ];
         }
 
+        $email = config('public_email');
+        if (!isset($email))
+            $email = config('email');
+
         $this->getBeadCrumbs($page->id);
         $data['phone'] = config('phone');
-        $data['email'] = config('email');
+        $data['email'] = $email;
         $data['address'] = config('address');
         $data['pages'] = $this->page->getMenu();
         $page_blocks = $this->pageBlock->where('page_id', $page->id)->where('orders','>',0)->orderBy('orders')->get();
